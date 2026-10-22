@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Вход</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        label { display: block; margin-top: 12px; }
+        input { width: 260px; padding: 6px; max-width: 100%; }
+        button { margin-top: 15px; padding: 8px 14px; }
+        .error { color: #d9534f; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Вход</h1>
+    <div class="error" th:if="${error}" th:text="${error}"></div>
+    <form th:action="@{/login}" method="post">
+        <label>Логин
+            <input type="text" name="username" required>
+        </label>
+        <label>Пароль
+            <input type="password" name="password" required>
+        </label>
+        <button type="submit">Войти</button>
+    </form>
+    <p>Нет аккаунта? <a th:href="@{/register}">Зарегистрироваться</a></p>
+</body>
+</html>

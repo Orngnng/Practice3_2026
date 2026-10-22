@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Добавление студента</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        label { display: block; margin-top: 12px; }
+        input[type=text], input[type=number] { width: 260px; padding: 6px; max-width: 100%; }
+        button { margin-top: 15px; padding: 8px 14px; }
+    </style>
+</head>
+<body>
+    <h1>Добавление студента</h1>
+    <form th:action="@{/students/add}" th:object="${student}" method="post">
+        <label>Имя
+            <input type="text" th:field="*{name}" required>
+        </label>
+        <label>Курс
+            <input type="number" min="1" max="6" th:field="*{course}" required>
+        </label>
+        <label>
+            <input type="checkbox" th:field="*{hasDebt}"> Есть задолженность
+        </label>
+        <button type="submit">Сохранить</button>
+        <a th:href="@{/students}">Назад к списку</a>
+    </form>
+</body>
+</html>
